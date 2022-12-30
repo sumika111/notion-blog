@@ -36,21 +36,13 @@ const renderNestedList = (block) => {
   const value = block[type];
   if (!value) return null;
 
-  const isNumberedList = value.children[0].type === 'numbered_list_item'
+  const isNumberedList = value.children[0].type === "numbered_list_item";
 
   if (isNumberedList) {
-    return (
-      <ol>
-        {value.children.map((block) => renderBlock(block))}
-      </ol>
-    )
+    return <ol>{value.children.map((block) => renderBlock(block))}</ol>;
   }
-  return (
-    <ul>
-      {value.children.map((block) => renderBlock(block))}
-    </ul>
-  )
-}
+  return <ul>{value.children.map((block) => renderBlock(block))}</ul>;
+};
 
 const renderBlock = (block) => {
   const { type, id } = block;
@@ -151,10 +143,10 @@ const renderBlock = (block) => {
         </figure>
       );
     case "bookmark":
-      const href = value.url
+      const href = value.url;
       return (
-        <a href={ href } target="_brank" className={styles.bookmark}>
-          { href }
+        <a href={href} target="_brank" className={styles.bookmark}>
+          {href}
         </a>
       );
     default:
@@ -171,13 +163,13 @@ export default function Post({ page, blocks }) {
   return (
     <div>
       <Head>
-        <title>{page.properties.Name.title[0].plain_text}</title>
+        <title>{page.properties.名前.title[0].plain_text}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <article className={styles.container}>
         <h1 className={styles.name}>
-          <Text text={page.properties.Name.title} />
+          <Text text={page.properties.名前.title} />
         </h1>
         <section>
           {blocks.map((block) => (
